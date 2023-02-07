@@ -11,14 +11,13 @@ public class LoadBalancerTest {
 
     @Test
     public void testLoadBalancer() throws Exception {
-        LoadBalancer loadBalancer = new LoadBalancer();
-
         List<ApplicationNode> addList = new ArrayList<>();
         addList.add(new ApplicationNode("101", true));
         addList.add(new ApplicationNode("102", true));
         addList.add(new ApplicationNode("103", true));
         addList.add(new ApplicationNode("103", true));
-        loadBalancer.addApplicationNodes(addList);
+        LoadBalancer loadBalancer = new LoadBalancer(addList);
+
         assertEquals(loadBalancer.getUsedNodeIds().size(), 3);
     }
 }

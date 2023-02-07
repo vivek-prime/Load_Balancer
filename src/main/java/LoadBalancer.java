@@ -13,12 +13,17 @@ public class LoadBalancer {
     private Map<String, ApplicationNode> applicationNodeMap;
     private List<String> usedNodeIds;
 
-    public LoadBalancer() {
+    public LoadBalancer(List<ApplicationNode> nodesList) throws Exception {
         usedNodeIds = new ArrayList<>();
         applicationNodeMap = new HashMap<>();
+        validationCheck(nodesList);
     }
 
     public void addApplicationNodes(List<ApplicationNode> nodesList) throws Exception {
+        validationCheck(nodesList);
+    }
+
+    private void validationCheck(List<ApplicationNode> nodesList) throws Exception {
         if (this.usedNodeIds.size() + nodesList.size() > maxNodes)
             throw new Exception("Max limit exceeded");
 
