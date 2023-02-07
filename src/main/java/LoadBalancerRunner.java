@@ -21,6 +21,7 @@ public class LoadBalancerRunner {
         List<String> removeList = new ArrayList<>();
         removeList.add("104");
         removeList.add("103");
+        loadBalancer.removeApplicationNodes(removeList);
         log.info("Currently Nodes : " + loadBalancer.getUsedNodeIds());
     }
 }
